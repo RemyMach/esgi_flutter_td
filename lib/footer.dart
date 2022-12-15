@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class Footer extends StatelessWidget {
   final double height;
+
   const Footer({Key? key, required this.height}) : super(key: key);
 
   @override
@@ -9,17 +10,16 @@ class Footer extends StatelessWidget {
     return Container(
       height: height,
       width: double.maxFinite,
-      color: Colors.purple,
-      child: LayoutBuilder(builder: (context, constraints) {
-        final maxHeight = constraints.maxHeight;
-        return const Text(
-          'Footer',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 30,
-          ),
-        );
-      }),
+      color: Colors.white,
+      child: const Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Text(
+            'Footer',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 30,
+            ),
+          )),
     );
   }
 }

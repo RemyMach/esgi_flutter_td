@@ -11,16 +11,16 @@ class Header extends StatelessWidget {
       height: height,
       width: double.maxFinite,
       color: Colors.purple,
-      child: LayoutBuilder(builder: (context, constraints) {
-        final maxHeight = constraints.maxHeight;
-        return const Text(
-          'Header',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 30,
-          ),
-        );
-      }),
+      child: const Padding(
+          padding: EdgeInsets.all(15.0),
+          child: Text(
+            'Vos choix :',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 28,
+              fontWeight: FontWeight.bold,
+            ),
+          )),
     );
   }
 }
