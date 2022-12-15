@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:td_flutter/choice_item.dart';
 
 class Footer extends StatelessWidget {
-  final double height;
+  final int heightFlex;
   final List<String> hobbies = [
     "Football",
     "Basketball",
@@ -13,26 +13,28 @@ class Footer extends StatelessWidget {
     "Bodybuilding",
   ];
 
-  Footer({Key? key, required this.height}) : super(key: key);
+  Footer({Key? key, required this.heightFlex}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: height,
-      width: double.maxFinite,
-      color: Colors.white,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Wrap(
-          spacing: 10,
-          runSpacing: 10,
-          children: hobbies.map((element) {
-            return ChoiceItem(
-                text: element,
-                sizeText: 18,
-                textColor: Colors.black,
-                backgroundColor: Colors.black12);
-          }).toList(),
+    return Expanded(
+      flex: heightFlex,
+      child: Container(
+        width: double.maxFinite,
+        color: Colors.white,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Wrap(
+            spacing: 10,
+            runSpacing: 10,
+            children: hobbies.map((element) {
+              return ChoiceItem(
+                  text: element,
+                  sizeText: 18,
+                  textColor: Colors.black,
+                  backgroundColor: Colors.black12);
+            }).toList(),
+          ),
         ),
       ),
     );

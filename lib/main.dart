@@ -38,8 +38,8 @@ class Home extends StatelessWidget {
             final heightMax = constraints.maxHeight;
             return Column(
               children: [
-                Header(height: heightMax * 0.8),
-                Footer(height: heightMax * 0.2),
+                const Header(heightFlex: 2),
+                Footer(heightFlex: 1),
               ],
             );
           },
