@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:td_flutter/choice_item.dart';
 
-class Footer extends StatelessWidget {
+class Footer extends StatefulWidget {
   final int heightFlex;
-  final List<String> hobbies = [
+  const Footer({Key? key, required this.heightFlex}) : super(key: key);
+
+  @override
+  State<Footer> createState() => _FooterState(heightFlex: heightFlex);
+}
+
+class _FooterState extends State<Footer> {
+  final int heightFlex;
+  /*List<String> hobbies = [
     "Football",
     "Basketball",
     "Volleyball",
@@ -11,9 +19,18 @@ class Footer extends StatelessWidget {
     "Chess",
     "Ping Pong",
     "Bodybuilding",
-  ];
+  ];*/
+  Map<String, Color> hobbies = {
+    "Football": Colors.black12,
+    "Basketball": Colors.black12,
+    "Volleyball": Colors.black12,
+    "Tennis": Colors.black12,
+    "Chess": Colors.black12,
+    "Ping Pong": Colors.black12,
+    "Bodybuilding": Colors.black12,
+  };
 
-  Footer({Key? key, required this.heightFlex}) : super(key: key);
+  _FooterState({Key? key, required this.heightFlex});
 
   @override
   Widget build(BuildContext context) {
@@ -27,16 +44,23 @@ class Footer extends StatelessWidget {
           child: Wrap(
             spacing: 10,
             runSpacing: 10,
-            children: hobbies.map((element) {
+            children: hobbies.keys.map((elementValue) {
               return ChoiceItem(
-                  text: element,
+                  text: elementValue,
                   sizeText: 18,
                   textColor: Colors.black,
-                  backgroundColor: Colors.black12);
+                  backgroundColor: hobbies[elementValue]!);
             }).toList(),
           ),
         ),
       ),
     );
+  }
+
+  void _onTap(String textTapped) {
+    setState(() {
+      hobbies[textTapped] =
+          hobbies[textTapped] == Colors.black12 ? Colors.orange : Colors.black12;
+    });
   }
 }
