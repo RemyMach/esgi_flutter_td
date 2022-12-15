@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 
 class Footer extends StatelessWidget {
-  const Footer({Key? key}) : super(key: key);
+  final double height;
+  const Footer({Key? key, required this.height}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
+      height: height,
+      width: double.maxFinite,
       color: Colors.purple,
       child: LayoutBuilder(builder: (context, constraints) {
         final maxHeight = constraints.maxHeight;
         return const Text(
-          'Header',
+          'Footer',
           style: TextStyle(
             color: Colors.white,
             fontSize: 30,
