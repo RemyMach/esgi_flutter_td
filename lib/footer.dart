@@ -27,7 +27,11 @@ class Footer extends StatelessWidget {
           spacing: 10,
           runSpacing: 10,
           children: hobbies.map((element) {
-            return ChoiceItem(text: element);
+            return ChoiceItem(
+                text: element,
+                sizeText: 18,
+                textColor: Colors.black,
+                backgroundColor: Colors.black12);
           }).toList(),
         ),
       ),
