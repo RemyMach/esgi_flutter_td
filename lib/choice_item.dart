@@ -20,14 +20,16 @@ class ChoiceItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        onTap!(text);
+        if( onTap != null ) {
+          onTap!(text);
+        }
       },
       child: Container(
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
           color: backgroundColor,
           shape: BoxShape.rectangle,
-          borderRadius: BorderRadius.all(Radius.circular(20)),
+          borderRadius: const BorderRadius.all(Radius.circular(20)),
         ),
         child: Text(
           text,

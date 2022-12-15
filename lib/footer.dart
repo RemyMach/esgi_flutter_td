@@ -3,25 +3,21 @@ import 'package:td_flutter/choice_item.dart';
 
 class Footer extends StatefulWidget {
   final int heightFlex;
+  final Function selectHobby;
 
-  const Footer({Key? key, required this.heightFlex}) : super(key: key);
+  const Footer({Key? key, required this.heightFlex, required this.selectHobby})
+      : super(key: key);
 
   @override
-  State<Footer> createState() => _FooterState(heightFlex: heightFlex);
+  State<Footer> createState() => _FooterState(
+        heightFlex: heightFlex,
+        selectHobby: selectHobby,
+      );
 }
 
 class _FooterState extends State<Footer> {
   final int heightFlex;
-
-  /*List<String> hobbies = [
-    "Football",
-    "Basketball",
-    "Volleyball",
-    "Tennis",
-    "Chess",
-    "Ping Pong",
-    "Bodybuilding",
-  ];*/
+  final Function selectHobby;
   Map<String, Color> hobbies = {
     "Football": Colors.black12,
     "Basketball": Colors.black12,
@@ -32,7 +28,7 @@ class _FooterState extends State<Footer> {
     "Bodybuilding": Colors.black12,
   };
 
-  _FooterState({Key? key, required this.heightFlex});
+  _FooterState({Key? key, required this.heightFlex, required this.selectHobby});
 
   @override
   Widget build(BuildContext context) {
@@ -63,9 +59,13 @@ class _FooterState extends State<Footer> {
 
   void _onTap(String textTapped) {
     setState(() {
-      hobbies[textTapped] = hobbies[textTapped] == Colors.black12
-          ? Colors.orange
-          : Colors.black12;
+      if (hobbies[textTapped] == Colors.black12) {
+        hobbies[textTapped] = Colors.orange;
+        selectHobby(textTapped);
+      } else {
+        hobbies[textTapped] = Colors.black12;
+        selectHobby(textTapped);
+      }
     });
   }
 }

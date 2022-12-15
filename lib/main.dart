@@ -26,8 +26,15 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  List<String> selectedHobbies = [];
 
   @override
   Widget build(BuildContext context) {
@@ -35,11 +42,27 @@ class Home extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            const Header(heightFlex: 2),
-            Footer(heightFlex: 1),
+            Header(
+              heightFlex: 2,
+              selectedHobbies: selectedHobbies,
+            ),
+            Footer(
+              heightFlex: 1,
+              selectHobby: _selectHobby,
+            ),
           ],
         ),
       ),
     );
+  }
+
+  void _selectHobby(String textTapped) {
+    setState(() {
+      if (!selectedHobbies.contains(textTapped)) {
+        selectedHobbies.add(textTapped);
+      } else {
+        selectedHobbies.remove(textTapped);
+      }
+    });
   }
 }
