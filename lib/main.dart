@@ -32,16 +32,18 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: LayoutBuilder(
-        builder: (context, constraints) {
-          final heightMax = MediaQuery.of(context).size.height;
-          return Column(
-            children: [
-              Header(height: heightMax * 0.8),
-              Footer(height: heightMax * 0.2),
-            ],
-          );
-        },
+      body: SafeArea(
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final heightMax = constraints.maxHeight;
+            return Column(
+              children: [
+                Header(height: heightMax * 0.8),
+                Footer(height: heightMax * 0.2),
+              ],
+            );
+          },
+        ),
       ),
     );
   }
