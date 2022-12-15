@@ -5,9 +5,11 @@ class ChoiceItem extends StatelessWidget {
   final double sizeText;
   final Color backgroundColor;
   final Color textColor;
+  final Function? onTap;
 
   const ChoiceItem(
       {Key? key,
+      this.onTap,
       required this.text,
       required this.sizeText,
       required this.textColor,
@@ -16,18 +18,23 @@ class ChoiceItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(8),
-      decoration: BoxDecoration(
-        color: backgroundColor,
-        shape: BoxShape.rectangle,
-        borderRadius: BorderRadius.all(Radius.circular(20)),
-      ),
-      child: Text(
-        text,
-        style: TextStyle(
-          color: textColor,
-          fontSize: sizeText,
+    return GestureDetector(
+      onTap: () {
+        onTap!(text);
+      },
+      child: Container(
+        padding: const EdgeInsets.all(8),
+        decoration: BoxDecoration(
+          color: backgroundColor,
+          shape: BoxShape.rectangle,
+          borderRadius: BorderRadius.all(Radius.circular(20)),
+        ),
+        child: Text(
+          text,
+          style: TextStyle(
+            color: textColor,
+            fontSize: sizeText,
+          ),
         ),
       ),
     );
