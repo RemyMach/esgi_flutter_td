@@ -33,16 +33,11 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            final heightMax = constraints.maxHeight;
-            return Column(
-              children: [
-                const Header(heightFlex: 2),
-                Footer(heightFlex: 1),
-              ],
-            );
-          },
+        child: Column(
+          children: [
+            const Header(heightFlex: 2),
+            Footer(heightFlex: 1),
+          ],
         ),
       ),
     );
