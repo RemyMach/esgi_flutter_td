@@ -35,6 +35,15 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   List<String> selectedHobbies = [];
+  List<HobbiesUi> hobbies = [
+    HobbiesUi(text: "Football", backgroundColor: Colors.black12),
+    HobbiesUi(text: "Basketball", backgroundColor: Colors.black12),
+    HobbiesUi(text: "Volleyball", backgroundColor: Colors.black12),
+    HobbiesUi(text: "Tennis", backgroundColor: Colors.black12),
+    HobbiesUi(text: "Chess", backgroundColor: Colors.black12),
+    HobbiesUi(text: "Ping Pong", backgroundColor: Colors.black12),
+    HobbiesUi(text: "Bodybuilding", backgroundColor: Colors.black12),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +58,7 @@ class _HomeState extends State<Home> {
             Footer(
               heightFlex: 1,
               selectHobby: _selectHobby,
+              hobbiesItemsUi: hobbies,
             ),
           ],
         ),

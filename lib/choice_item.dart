@@ -5,11 +5,9 @@ class ChoiceItem extends StatelessWidget {
   final double sizeText;
   final Color backgroundColor;
   final Color textColor;
-  final Function? onTap;
 
   const ChoiceItem({
     Key? key,
-    this.onTap,
     required this.text,
     required this.sizeText,
     required this.textColor,

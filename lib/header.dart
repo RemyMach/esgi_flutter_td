@@ -5,9 +5,11 @@ class Header extends StatelessWidget {
   final int heightFlex;
   final List<String> selectedHobbies;
 
-  const Header(
-      {Key? key, required this.heightFlex, required this.selectedHobbies})
-      : super(key: key);
+  const Header({
+    Key? key,
+    required this.heightFlex,
+    required this.selectedHobbies,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

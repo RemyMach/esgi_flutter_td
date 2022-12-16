@@ -1,30 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:td_flutter/choice_item.dart';
 
+class HobbiesUi {
+  final String text;
+  Color backgroundColor;
+
+  HobbiesUi({
+    required this.text,
+    required this.backgroundColor,
+  });
+}
+
 class Footer extends StatefulWidget {
   final int heightFlex;
   final Function selectHobby;
+  final List<HobbiesUi> hobbiesItemsUi;
 
-  const Footer({Key? key, required this.heightFlex, required this.selectHobby})
-      : super(key: key);
+  const Footer({
+    Key? key,
+    required this.heightFlex,
+    required this.selectHobby,
+    required this.hobbiesItemsUi,
+  }) : super(key: key);
 
   @override
   State<Footer> createState() => _FooterState();
 }
 
 class _FooterState extends State<Footer> {
-  Map<String, Color> hobbies = {
-    "Football": Colors.black12,
-    "Basketball": Colors.black12,
-    "Volleyball": Colors.black12,
-    "Tennis": Colors.black12,
-    "Chess": Colors.black12,
-    "Ping Pong": Colors.black12,
-    "Bodybuilding": Colors.black12,
-  };
-
-  _FooterState({Key? key});
-
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -37,17 +40,16 @@ class _FooterState extends State<Footer> {
           child: Wrap(
             spacing: 10,
             runSpacing: 10,
-            children: hobbies.keys.map((elementValue) {
+            children: widget.hobbiesItemsUi.map((element) {
               return GestureDetector(
                   onTap: () {
-                    _onTap(elementValue);
+                    _onTapOnChoiceItem(element);
                   },
                   child: ChoiceItem(
-                    text: elementValue,
+                    text: element.text,
                     sizeText: 18,
                     textColor: Colors.black,
-                    backgroundColor: hobbies[elementValue]!,
-                    onTap: _onTap,
+                    backgroundColor: element.backgroundColor,
                   ));
             }).toList(),
           ),
@@ -56,14 +58,16 @@ class _FooterState extends State<Footer> {
     );
   }
 
-  void _onTap(String textTapped) {
+  void _onTapOnChoiceItem(HobbiesUi hobbiesUi) {
     setState(() {
-      if (hobbies[textTapped] == Colors.black12) {
-        hobbies[textTapped] = Colors.orange;
-        widget.selectHobby(textTapped);
-      } else {
-        hobbies[textTapped] = Colors.black12;
-        widget.selectHobby(textTapped);
+      var choiceItemIsAlreadySelected =
+          hobbiesUi.backgroundColor == Colors.orange;
+      if (!choiceItemIsAlreadySelected) {
+        hobbiesUi.backgroundColor = Colors.orange;
+        widget.selectHobby(hobbiesUi.text);
+      } else if (choiceItemIsAlreadySelected) {
+        hobbiesUi.backgroundColor = Colors.black12;
+        widget.selectHobby(hobbiesUi.text);
       }
     });
   }
