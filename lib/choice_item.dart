@@ -7,20 +7,20 @@ class ChoiceItem extends StatelessWidget {
   final Color textColor;
   final Function? onTap;
 
-  const ChoiceItem(
-      {Key? key,
-      this.onTap,
-      required this.text,
-      required this.sizeText,
-      required this.textColor,
-      required this.backgroundColor})
-      : super(key: key);
+  const ChoiceItem({
+    Key? key,
+    this.onTap,
+    required this.text,
+    required this.sizeText,
+    required this.textColor,
+    required this.backgroundColor,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        if( onTap != null ) {
+        if (onTap != null) {
           onTap!(text);
         }
       },

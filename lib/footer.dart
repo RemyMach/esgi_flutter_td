@@ -9,15 +9,11 @@ class Footer extends StatefulWidget {
       : super(key: key);
 
   @override
-  State<Footer> createState() => _FooterState(
-        heightFlex: heightFlex,
-        selectHobby: selectHobby,
-      );
+  State<Footer> createState() => _FooterState();
 }
 
 class _FooterState extends State<Footer> {
-  final int heightFlex;
-  final Function selectHobby;
+
   Map<String, Color> hobbies = {
     "Football": Colors.black12,
     "Basketball": Colors.black12,
@@ -28,12 +24,12 @@ class _FooterState extends State<Footer> {
     "Bodybuilding": Colors.black12,
   };
 
-  _FooterState({Key? key, required this.heightFlex, required this.selectHobby});
+  _FooterState({Key? key});
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      flex: heightFlex,
+      flex: widget.heightFlex,
       child: Container(
         width: double.maxFinite,
         color: Colors.white,
@@ -61,10 +57,10 @@ class _FooterState extends State<Footer> {
     setState(() {
       if (hobbies[textTapped] == Colors.black12) {
         hobbies[textTapped] = Colors.orange;
-        selectHobby(textTapped);
+        widget.selectHobby(textTapped);
       } else {
         hobbies[textTapped] = Colors.black12;
-        selectHobby(textTapped);
+        widget.selectHobby(textTapped);
       }
     });
   }
