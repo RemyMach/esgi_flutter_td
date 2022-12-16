@@ -13,7 +13,6 @@ class Footer extends StatefulWidget {
 }
 
 class _FooterState extends State<Footer> {
-
   Map<String, Color> hobbies = {
     "Football": Colors.black12,
     "Basketball": Colors.black12,
@@ -39,13 +38,17 @@ class _FooterState extends State<Footer> {
             spacing: 10,
             runSpacing: 10,
             children: hobbies.keys.map((elementValue) {
-              return ChoiceItem(
-                text: elementValue,
-                sizeText: 18,
-                textColor: Colors.black,
-                backgroundColor: hobbies[elementValue]!,
-                onTap: _onTap,
-              );
+              return GestureDetector(
+                  onTap: () {
+                    _onTap(elementValue);
+                  },
+                  child: ChoiceItem(
+                    text: elementValue,
+                    sizeText: 18,
+                    textColor: Colors.black,
+                    backgroundColor: hobbies[elementValue]!,
+                    onTap: _onTap,
+                  ));
             }).toList(),
           ),
         ),
